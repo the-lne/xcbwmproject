@@ -1,0 +1,7 @@
+you could make a live gui changer where you open a config file that is read semi-frequently (or with bin).
+program the config file (which is basically just css; possibly included via #include) to 
+resize windows, change the layout, etc...
+
+frequently check for memory leaks
+
+implement glibc, gtk, and cmake in that order

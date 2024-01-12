@@ -6,60 +6,18 @@
  *      xcb structs - https://xcb.freedesktop.org/manual/annotated.html
  *      implementation wm via xcb (i3wm) - https://github.com/i3/i3
  *      i3 docs - https://i3wm.org/docs/hacking-howto.html
+ *      gtk - https://docs.gtk.org/gtk3/css-overview.html
  */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <xcb/xcb.h>
+#include <glib.h>
 
 int
 main ()
 {
-    /*
-    // geometric objects 
-    xcb_point_t points[] = {
-        {10, 10},
-        {10, 20},
-        {20, 10},
-        {20, 20}
-    };
-
-    xcb_point_t mypoints[] = {
-        {90, 10},
-        {90, 20},
-        {90, 10},
-        {90, 20}
-    };
-
-    xcb_point_t polyline[] = {
-        {50, 10},
-        {5 , 20},     // rest of points are relative 
-        {25,-20},
-        {10, 10}
-    };
-
-    xcb_segment_t segments[] = {
-        {1000, 1000, 40, 30},
-        {110, 25, 130, 60}
-    };
-
-
-    xcb_rectangle_t rectangles[] = {
-        {1200-1000, 50, 1920-800, 20}
-    };
-
-    // define rectangles after you pull screen stats with xcb_setup_roots_iterator
-    xcb_rectangle_t rectangles[] = {
-        {0, 0, 1366, 768}
-    };
-
-    xcb_arc_t arcs[] = {
-        {10, 100, 60, 40, 0, 90 << 6},
-        {90, 100, 55, 40, 0, 270 << 6}
-    };
-
-*/
     xcb_point_t polyline[] = {
         {50, 10},
         { 5, 20},     // rest of points are relative 
@@ -127,33 +85,10 @@ main ()
     while ((event = xcb_wait_for_event (connection))) {
         switch (event->response_type & ~0x80) {
             case XCB_EXPOSE:
-            /*
-                xcb_poly_point (connection, XCB_COORD_MODE_ORIGIN, window, foreground, 4, points);
-
-                xcb_poly_point (connection, XCB_COORD_MODE_ORIGIN, window, foreground, 4, mypoints);
-
-                // We draw the segments 
-                xcb_poly_segment (connection, window, foreground, 2, segments);
-
-                // We draw the polygonal line 
-                xcb_poly_line (connection, XCB_COORD_MODE_PREVIOUS, window, foreground, 4, polyline);
-
-                // We draw the segments 
-                xcb_poly_segment (connection, window, foreground, 2, segments);
-
-                // draw the rectangles 
-                xcb_poly_rectangle (connection, window, foreground, 2, rectangles);
-
-                // draw the arcs 
-                xcb_poly_arc (connection, window, foreground, 2, arcs);
-            */
                 // draw the rectangles 
                 xcb_poly_rectangle (connection, window, foreground, 1, rectangles);
  
-                // fill rectangles
-                //xcb_poly_fill_rectangle ( connection, window, foreground, 1, rectangles);
-
-                // We draw the polygonal line 
+                // draw the polygonal line 
                 xcb_poly_line (connection, XCB_COORD_MODE_PREVIOUS, window, foreground, 4, polyline);
 
                 // flush the request 

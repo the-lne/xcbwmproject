@@ -1,4 +1,7 @@
-An x client, disguised as a de or wm.
+An x client, disguised as a wm.
 
 deps:
-	x client library package for your package manager. The package is usually named something like 'libxcb' or 'libxcb-dev'. Other than that, this just uses the c standard library.
+	xcb
+	#gtk3
+	#glibc
+	#cmake and gcc
