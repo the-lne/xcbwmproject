@@ -1,0 +1,6 @@
+An x client, disguised as a de or wm.
+
+deps:
+	x client library package for your package manager. The package is usually named something like 'libxcb' or 'libxcb-dev'.
+	xcb stands for x window in c binary or something like that; It's the stadard headers and blobs that all x applications use.
+	Other than that, this just uses the c standard library.
