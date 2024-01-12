@@ -1,7 +1,0 @@
-An x client, disguised as a wm.
-
-deps:
-	xcb
-	#gtk3
-	#glibc
-	#cmake and gcc

@@ -1,4 +1,4 @@
-/**		MAIN.C
+/**		                MAIN.C
  * This is an x window client disguised as a de or wm.
  * 
  * Useful stuff
@@ -6,17 +6,18 @@
  *      xcb structs - https://xcb.freedesktop.org/manual/annotated.html
  *      implementation wm via xcb (i3wm) - https://github.com/i3/i3
  *      i3 docs - https://i3wm.org/docs/hacking-howto.html
- *      gtk - https://docs.gtk.org/gtk3/css-overview.html
+ *      gtk3 - https://docs.gtk.org/gtk3/
+ *      glib-2.0 - https://docs.gtk.org/glib/
  */
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <xcb/xcb.h>
+#include <gtk/gtk.h>
 #include <glib.h>
 
-int
-main ()
+int main()
 {
     xcb_point_t polyline[] = {
         {50, 10},

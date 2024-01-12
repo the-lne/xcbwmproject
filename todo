@@ -4,4 +4,4 @@ resize windows, change the layout, etc...
 
 frequently check for memory leaks
 
-implement glibc, gtk, and cmake in that order
+implement gtk, glib, and cmake
