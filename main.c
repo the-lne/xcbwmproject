@@ -1,6 +1,13 @@
 /**		MAIN.C
  * This is an x window client disguised as a de or wm.
+ * 
+ * Useful stuff
+ *      xcb's source code - https://gitlab.freedesktop.org/xorg/lib/libxcb 
+ *      xcb structs - https://xcb.freedesktop.org/manual/annotated.html
+ *      implementation wm via xcb (i3wm) - https://github.com/i3/i3
+ *      i3 docs - https://i3wm.org/docs/hacking-howto.html
  */
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
