@@ -15,3 +15,6 @@ Useful sources (for me):
     i3 docs - https://i3wm.org/docs/hacking-howto.html
     gtk3 - https://docs.gtk.org/gtk3/
     glib-2.0 - https://docs.gtk.org/glib/
+
+    xlib vol I - https://archive.org/details/xlibprogrammingm00nyea_0/mode/2up
+    xlib vol II - https://archive.org/details/xlibreferenceman00adri
