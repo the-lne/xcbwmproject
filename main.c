@@ -10,21 +10,40 @@
  *      glib-2.0 - https://docs.gtk.org/glib/
  */
 
+// get gtk working and filling up the entire xcb window
+
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
 #include <xcb/xcb.h>
 #include <gtk/gtk.h>
-#include <glib.h>
+//#include <glib.h>
 
-int main()
+
+
+
+static void
+activate (GtkApplication* app,
+          gpointer        user_data)
 {
+  GtkWidget *window;
+
+  window = gtk_application_window_new (app);
+  gtk_window_set_title (GTK_WINDOW (window), "Window");
+  gtk_window_set_default_size (GTK_WINDOW (window), 200, 200);
+  gtk_widget_show_all (window);
+}
+
+int main(int argc, char** argv)
+{
+    /*
     xcb_point_t polyline[] = {
         {50, 10},
         { 5, 20},     // rest of points are relative 
         {25,-20},
         {10, 10}
     };
+    */
 
     /* Open the connection to the X server */
     int connection_screen;
@@ -50,7 +69,7 @@ int main()
 
     xcb_create_gc (connection, foreground, window, mask, values);
 
-    printf("\n%i\t%i\n", screen->width_in_pixels, screen->height_in_pixels);
+    printf ("\n%i\t%i\n", screen->width_in_pixels, screen->height_in_pixels);
 
 
     /* Create a window */
@@ -60,25 +79,35 @@ int main()
     values[0] = screen->black_pixel;
     values[1] = XCB_EVENT_MASK_EXPOSURE;
 
-    xcb_create_window( 
-                       connection,                    /* connection     */
-                       XCB_COPY_FROM_PARENT,          /* depth          */
-                       window,                        /* window Id      */
-                       screen->root,                  /* parent window  */
-                       0,                             /* x              */ 
-                       0,                             /* y              */
-                       screen->width_in_pixels,       /* width          */
-                       screen->height_in_pixels,      /* height         */
-                       0,                             /* border_width   */
-                       XCB_WINDOW_CLASS_INPUT_OUTPUT, /* class          */
-                       screen->root_visual,           /* visual         */
-                       mask, values                   /* masks          */
-                    );
+    xcb_create_window ( 
+                        connection,                    /* connection     */
+                        XCB_COPY_FROM_PARENT,          /* depth          */
+                        window,                        /* window Id      */
+                        screen->root,                  /* parent window  */
+                        0,                             /* x              */ 
+                        0,                             /* y              */
+                        screen->width_in_pixels,       /* width          */
+                        screen->height_in_pixels,      /* height         */
+                        0,                             /* border_width   */
+                        XCB_WINDOW_CLASS_INPUT_OUTPUT, /* class          */
+                        screen->root_visual,           /* visual         */
+                        mask, values                   /* masks          */
+                      );
 
 
     /* Map the window on the screen and flush*/
     xcb_map_window (connection, window);
     xcb_flush (connection);
+
+
+    /* Create gtk instance */
+    GtkApplication *app;
+    int status;
+    app = gtk_application_new ("org.gtk.example", G_APPLICATION_DEFAULT_FLAGS);
+    g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
+    status = g_application_run (G_APPLICATION (app), argc, argv);
+    g_object_unref (app);
+
 
 
     // draw primitives 
@@ -87,10 +116,10 @@ int main()
         switch (event->response_type & ~0x80) {
             case XCB_EXPOSE:
                 // draw the rectangles 
-                xcb_poly_rectangle (connection, window, foreground, 1, rectangles);
+                //xcb_poly_rectangle (connection, window, foreground, 1, rectangles);
  
                 // draw the polygonal line 
-                xcb_poly_line (connection, XCB_COORD_MODE_PREVIOUS, window, foreground, 4, polyline);
+                //xcb_poly_line (connection, XCB_COORD_MODE_PREVIOUS, window, foreground, 4, polyline);
 
                 // flush the request 
                 xcb_flush (connection);
