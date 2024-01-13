@@ -8,6 +8,8 @@ frequently check for memory leaks
 
 implement gtk, glib, and cmake
 
+make it multi threaded
+
 plan:
 okay so I found a book that teaches the mysical ways of x, so I think I should read that 
 as x is the foundation of what the wm
@@ -16,3 +18,5 @@ after that... I really don't know exactly how or if I can use gtk. It looks like
 a few different toolkits for making widgets, gtk was not listed. I don't plan on reinventing 
 the wheel or using things for other than their intended purpose; too many projects have gone 
 sideways doing otherwise.
+    okay so i thought about it, i3wm can run applications in windows at full screen, I'm not sure why a 
+    gtk application would be any different. and at that point, the actual ui becomes very flexible
