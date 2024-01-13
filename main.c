@@ -22,6 +22,7 @@
 
 
 
+/*
 static void
 activate (GtkApplication* app,
           gpointer        user_data)
@@ -33,6 +34,7 @@ activate (GtkApplication* app,
   gtk_window_set_default_size (GTK_WINDOW (window), 200, 200);
   gtk_widget_show_all (window);
 }
+*/
 
 int main(int argc, char** argv)
 {
@@ -101,12 +103,14 @@ int main(int argc, char** argv)
 
 
     /* Create gtk instance */
+    /*
     GtkApplication *app;
     int status;
     app = gtk_application_new ("org.gtk.example", G_APPLICATION_DEFAULT_FLAGS);
     g_signal_connect (app, "activate", G_CALLBACK (activate), NULL);
     status = g_application_run (G_APPLICATION (app), argc, argv);
     g_object_unref (app);
+    */
 
 
 

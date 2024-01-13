@@ -1,3 +1,4 @@
+ideas:
 you could make a live gui changer where you open a config file that is read semi-frequently (or with bin).
 program the config file (which is basically just css; possibly included via #include) to 
 resize windows, change the layout, etc... 
@@ -6,3 +7,12 @@ resize windows, change the layout, etc...
 frequently check for memory leaks
 
 implement gtk, glib, and cmake
+
+plan:
+okay so I found a book that teaches the mysical ways of x, so I think I should read that 
+as x is the foundation of what the wm
+
+after that... I really don't know exactly how or if I can use gtk. It looks like x has 
+a few different toolkits for making widgets, gtk was not listed. I don't plan on reinventing 
+the wheel or using things for other than their intended purpose; too many projects have gone 
+sideways doing otherwise.
